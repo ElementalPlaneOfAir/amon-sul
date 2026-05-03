@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   imports = [
     ./hardware.nix
-    ../config.nix
+    ../../config.nix
   ];
 
   networking.hostName = "amon-sul";

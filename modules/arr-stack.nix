@@ -7,6 +7,14 @@
   }: let
     machineName = config.networking.hostName;
   in {
+    clan.core.vars.generators.privado-wireguard = {
+      prompts.wireguard-conf = {
+        description = "Paste your Privado VPN WireGuard configuration";
+        type = "multiline";
+        persist = true;
+      };
+    };
+
     vpnNamespaces.wg = {
       enable = true;
       wireguardConfigFile = config.clan.core.vars.generators.privado-wireguard.files.wireguard-conf.path;

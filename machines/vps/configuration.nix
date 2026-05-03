@@ -1,8 +1,6 @@
 { config, ... }: {
   imports = [ ./disk-config.nix ];
 
-  boot.loader.grub.device = "/dev/vda";
-
   networking.hostName = "vps";
   networking.useDHCP = true;
 

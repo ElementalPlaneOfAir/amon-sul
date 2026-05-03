@@ -7,11 +7,78 @@
   # ---------------------------------------------------------------------------
   # Services
   # ---------------------------------------------------------------------------
-  cococoir.services.jellyfin.enable = true;
-  cococoir.services.vaultwarden.enable = true;
-  cococoir.services.forgejo.enable = true;
-  cococoir.services.matrix.enable = true;
-  cococoir.services.cryptpad.enable = true;
+  cococoir.services.jellyfin = {
+    enable = true;
+    domain = "jellyfin.interdim.net";
+    public = true;
+  };
+
+  cococoir.services.vaultwarden = {
+    enable = true;
+    domain = "vault.interdim.net";
+    public = true;
+  };
+
+  cococoir.services.forgejo = {
+    enable = true;
+    domain = "git.interdim.net";
+    public = true;
+  };
+
+  cococoir.services.matrix = {
+    enable = true;
+    domain = "matrix.interdim.net";
+    public = true;
+  };
+
+  cococoir.services.cryptpad = {
+    enable = true;
+    domain = "cryptpad.interdim.net";
+    public = true;
+  };
+
+  cococoir.services.transmission = {
+    enable = true;
+    domain = "transmission.interdim.net";
+    public = false;
+    vpnConfigFile = config.clan.core.vars.generators.privado-wireguard.files.wireguard-conf.path;
+  };
+
+  cococoir.services.prowlarr = {
+    enable = true;
+    domain = "prowlarr.interdim.net";
+    public = false;
+  };
+
+  cococoir.services.radarr = {
+    enable = true;
+    domain = "radarr.interdim.net";
+    public = false;
+  };
+
+  cococoir.services.sonarr = {
+    enable = true;
+    domain = "sonarr.interdim.net";
+    public = false;
+  };
+
+  cococoir.services.lidarr = {
+    enable = true;
+    domain = "lidarr.interdim.net";
+    public = false;
+  };
+
+  cococoir.services.bazarr = {
+    enable = true;
+    domain = "bazarr.interdim.net";
+    public = false;
+  };
+
+  cococoir.services.flaresolverr = {
+    enable = true;
+    domain = "flaresolverr.interdim.net";
+    public = false;
+  };
 
   # ---------------------------------------------------------------------------
   # Proxy (client side — tunnels to VPS)

@@ -41,8 +41,8 @@
                 injectInputs
                 inputs.vpn-confinement.nixosModules.default
                 inputs.cococoir.nixosModules.default
-                inputs.self.modules.nixos.arrStack
                 inputs.self.modules.nixos.ratholeVars
+                ./machines/amon-sul/vpnVars.nix
                 inputs.self.modules.nixos.users
                 ./machines/amon-sul/configuration.nix
               ];

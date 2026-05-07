@@ -37,6 +37,12 @@
     public = true;
   };
 
+  cococoir.services.kavita = {
+    enable = true;
+    domain = "kavita.interdim.net";
+    public = true;
+  };
+
   cococoir.services.transmission = {
     enable = true;
     domain = "transmission.interdim.net";

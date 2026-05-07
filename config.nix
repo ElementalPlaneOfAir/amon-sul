@@ -81,6 +81,22 @@
   };
 
   # ---------------------------------------------------------------------------
+  # Custom services (upstream systemd modules imported separately)
+  # ---------------------------------------------------------------------------
+  services.gdoc-extract = {
+    enable = true;
+    bindAddress = "127.0.0.1";
+    port = 8080;
+  };
+
+  cococoir.services.custom.gdoc-extract = {
+    enable = true;
+    domain = "misc.interdim.net";
+    port = 8080;
+    public = true;
+  };
+
+  # ---------------------------------------------------------------------------
   # Proxy (client side — tunnels to VPS)
   # ---------------------------------------------------------------------------
   cococoir.proxy.client = {

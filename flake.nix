@@ -41,6 +41,7 @@
                 injectInputs
                 inputs.vpn-confinement.nixosModules.default
                 inputs.cococoir.nixosModules.default
+                inputs.gdoc-extract.nixosModules.default
                 inputs.self.modules.nixos.ratholeVars
                 ./machines/amon-sul/vpnVars.nix
                 inputs.self.modules.nixos.users
@@ -87,6 +88,10 @@
     };
     cococoir = {
       url = "path:/home/nicole/cococoir";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    gdoc-extract = {
+      url = "path:/home/nicole/Documents/small-jobs/mom-google-docs-extraction-server";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

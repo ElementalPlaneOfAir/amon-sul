@@ -38,8 +38,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1777834479,
-        "narHash": "sha256-B8DrwBSv0gIlLChbWALxBaRVyOHyxhwng1fmTXrvep8=",
+        "lastModified": 1778066824,
+        "narHash": "sha256-6z0/ng3T8qUb3ztxJsjvSj+Aae9Xj0UQQ4zV+Dqe1Gw=",
         "path": "/home/nicole/cococoir",
         "type": "path"
       },
@@ -205,6 +205,23 @@
         "owner": "numtide",
         "repo": "flake-utils",
         "type": "github"
+      }
+    },
+    "gdoc-extract": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777911203,
+        "narHash": "sha256-DI9u4isjlgMpdMmE8XyzEYlk8BkxXXYKD+kSifwuw0Q=",
+        "path": "/home/nicole/Documents/small-jobs/mom-google-docs-extraction-server",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/nicole/Documents/small-jobs/mom-google-docs-extraction-server",
+        "type": "path"
       }
     },
     "hardware": {
@@ -550,6 +567,7 @@
         "clan-core": "clan-core",
         "cococoir": "cococoir",
         "flake-parts": "flake-parts",
+        "gdoc-extract": "gdoc-extract",
         "import-tree": "import-tree",
         "limonene": "limonene",
         "nixpkgs": "nixpkgs_2",

@@ -84,6 +84,7 @@ Clan stores per-machine and shared variables under `vars/` and encrypted secrets
 | Vaultwarden | `vault.interdim.net` | ✅ | — |
 | Forgejo | `git.interdim.net` | ✅ | — |
 | Matrix | `matrix.interdim.net` | ✅ | `.well-known` on base domain. |
+| mautrix-gmessages | *(none)* | — | Matrix-Google Messages bridge. Appservice, no public vhost. Requires manual registration in Matrix admin room after first deploy. |
 | CryptPad | `cryptpad.interdim.net` | ✅ | — |
 | Transmission | `transmission.interdim.net` | ❌ | VPN-confined via WireGuard. |
 | Prowlarr | `prowlarr.interdim.net` | ❌ | — |
@@ -200,3 +201,4 @@ Both machines use `system.stateVersion = "24.11"`.
 - **Do not change `rathole-vars.nix` tokens** unless you intend to rotate credentials on both machines.
 - **The VPS is intentionally minimal.** Avoid adding heavy services there; keep them on `amon-sul` and tunnel via rathole.
 - **Transmission is VPN-confined.** If you add other services that need VPN isolation, follow the `vpnNamespaces.wg` + `systemd.services.<name>.vpnConfinement` pattern used in `media-stack.nix`.
+- **mautrix-gmessages requires manual appservice registration.** After first deploy, the bridge generates `/var/lib/mautrix-gmessages/gmessages-registration.yaml`. Copy its contents and paste it into the Matrix admin room with `!admin appservices register` followed by the YAML block. Then follow the bridge authentication docs at <https://docs.mau.fi/bridges/go/gmessages/authentication.html> to pair an Android phone.

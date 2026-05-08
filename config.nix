@@ -31,6 +31,10 @@
     public = true;
   };
 
+  cococoir.services.mautrix-gmessages = {
+    enable = true;
+  };
+
   cococoir.services.cryptpad = {
     enable = true;
     domain = "cryptpad.interdim.net";

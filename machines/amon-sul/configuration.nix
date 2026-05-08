@@ -1,9 +1,13 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware.nix
     ../../config.nix
   ];
-
+  nixpkgs.config.permittedInsecurePackages = ["olm-3.2.16"];
   networking.hostName = "amon-sul";
 
   # Clan deployment target

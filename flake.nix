@@ -78,16 +78,13 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    limonene = {
-      url = "github:cappuccinocosmico/limonene";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     vpn-confinement = {
       url = "github:Maroka-chan/VPN-Confinement";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     cococoir = {
-      url = "github:ElementalPlaneOfAir/cococoir";
+      url = "github:ElementalPlaneofAir/cococoir";
+      # url = "path:/home/nicole/cococoir";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     gdoc-extract = {

@@ -47,6 +47,12 @@
     public = true;
   };
 
+  cococoir.services.octoprint = {
+    enable = true;
+    domain = "octoprint.interdim.net";
+    public = false;
+  };
+
   cococoir.services.transmission = {
     enable = true;
     domain = "transmission.interdim.net";

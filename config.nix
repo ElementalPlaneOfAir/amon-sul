@@ -5,6 +5,16 @@
   cococoir.domain = "interdim.net";
 
   # ---------------------------------------------------------------------------
+  # Admin Authentication (Caddy basicauth for *rr stack, Transmission, OctoPrint)
+  # Generate your own hash: mkpasswd -m bcrypt
+  # OctoPrint: ensure your admin account is named "admin" for auto-login.
+  # ---------------------------------------------------------------------------
+  cococoir.adminAuth = {
+    enable = true;
+    users.nicole = "$2b$05$DRPpuqQUFqbRI5o8mXytuOgCpGFcVkcDOWSC7Mn4vUTbPv4LhRRz6"; # changeme
+  };
+
+  # ---------------------------------------------------------------------------
   # Services
   # ---------------------------------------------------------------------------
   cococoir.services.jellyfin = {

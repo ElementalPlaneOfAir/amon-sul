@@ -38,11 +38,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778520692,
-        "narHash": "sha256-BhvLM0SeFpZdOFFXoacUtDzluhPgc/LAYg+hukxBVxo=",
+        "lastModified": 1778532179,
+        "narHash": "sha256-K43KToEvUqXnHIT7ZfacRGFjdBvAeT4FOvXH007bh6k=",
         "owner": "ElementalPlaneofAir",
         "repo": "cococoir",
-        "rev": "610b6cb3281327c2fba33b480ddfc13bfb76a646",
+        "rev": "597578e479574fc0846b55e03dfef2c85f4a04e6",
         "type": "github"
       },
       "original": {

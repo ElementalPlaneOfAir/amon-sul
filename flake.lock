@@ -38,17 +38,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1778532179,
-        "narHash": "sha256-K43KToEvUqXnHIT7ZfacRGFjdBvAeT4FOvXH007bh6k=",
-        "owner": "ElementalPlaneofAir",
-        "repo": "cococoir",
-        "rev": "597578e479574fc0846b55e03dfef2c85f4a04e6",
-        "type": "github"
+        "lastModified": 1779138822,
+        "narHash": "sha256-lxwcjSZ0CzWVsO8giSXzvJKgqNRbkcHVpMaQcz2bXtw=",
+        "path": "/home/nicole/cococoir",
+        "type": "path"
       },
       "original": {
-        "owner": "ElementalPlaneofAir",
-        "repo": "cococoir",
-        "type": "github"
+        "path": "/home/nicole/cococoir",
+        "type": "path"
       }
     },
     "data-mesher": {

@@ -9,6 +9,17 @@
     enable = true;
     bindAddress = "0.0.0.0";
     credentialsFile = config.clan.core.vars.generators.rathole-tokens.files.server-tokens.path;
+    extraServices = {
+      minecraft_java = {
+        bind_addr = "0.0.0.0:25565";
+      };
+      minecraft_bedrock = {
+        bind_addr = "0.0.0.0:19132";
+        type = "udp";
+      };
+    };
+    extraTCPPorts = [ 25565 ];
+    extraUDPPorts = [ 19132 ];
   };
 
   # SSH hardening

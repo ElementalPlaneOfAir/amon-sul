@@ -42,6 +42,7 @@
                 inputs.vpn-confinement.nixosModules.default
                 inputs.cococoir.nixosModules.default
                 inputs.gdoc-extract.nixosModules.default
+                inputs.nix-minecraft.nixosModules.minecraft-servers
                 inputs.self.modules.nixos.ratholeVars
                 ./machines/amon-sul/vpnVars.nix
                 inputs.self.modules.nixos.users
@@ -89,6 +90,10 @@
     };
     gdoc-extract = {
       url = "path:/home/nicole/Documents/small-jobs/mom-google-docs-extraction-server";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-minecraft = {
+      url = "github:Infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

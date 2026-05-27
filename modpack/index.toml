@@ -31,11 +31,6 @@ hash = "adbe039e36d71ac5e8986288240d9a7e13720a108a70ffb0bb989d7a9a7ca30b"
 metafile = true
 
 [[files]]
-file = "mods/do-a-barrel-roll.pw.toml"
-hash = "0d4d1d2c1d871ac819943a098cefca67ec1ca0f603c5c574f588e9ded399bc65"
-metafile = true
-
-[[files]]
 file = "mods/fabric-api.pw.toml"
 hash = "2a77dc7aade5de6d21315582c4b70db40ff2bdf746b61c10d7ad3c5be8422f75"
 metafile = true

@@ -1,0 +1,13 @@
+name = "Seed Guard"
+filename = "seedguard+26.1-pre-3-1.0.1.jar"
+side = "server"
+
+[download]
+url = "https://cdn.modrinth.com/data/7e8ji5y2/versions/kzMmYXRY/seedguard%2B26.1-pre-3-1.0.1.jar"
+hash-format = "sha512"
+hash = "68af3b7dc0d62db2faa3a4d51f55e548732ae4eeafdaac43241746b4f94c179ac68ef12a87d8297ee0e59f907fb7449180d8e1eb9845987b9a4d107570b3e36c"
+
+[update]
+[update.modrinth]
+mod-id = "7e8ji5y2"
+version = "kzMmYXRY"

@@ -1,0 +1,13 @@
+name = "fabric anarchy ++"
+author = "Nic Venner"
+version = "1.0.0"
+pack-format = "packwiz:1.1.0"
+
+[index]
+file = "index.toml"
+hash-format = "sha256"
+hash = "e6f60aeb02917f5f6962d4b013739791fe6e0efe3309a719b34eb81c1da1c477"
+
+[versions]
+fabric = "0.19.2"
+minecraft = "26.1.2"

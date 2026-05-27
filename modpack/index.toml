@@ -1,0 +1,96 @@
+hash-format = "sha256"
+
+[[files]]
+file = "mods/alternate-current.pw.toml"
+hash = "319e33f0c095431cac722aec0c44649e7aeed9aa47e87426dc02b78ba1821585"
+metafile = true
+
+[[files]]
+file = "mods/anti-xray.pw.toml"
+hash = "1d07aae485a2a92527e66367b656e743ec6e84471296f2f93bee163de3eb5460"
+metafile = true
+
+[[files]]
+file = "mods/c2me-fabric.pw.toml"
+hash = "82f8e930d470d72330d18b6609e233f5c61a37866cec7c93f17d9bc6006e7565"
+metafile = true
+
+[[files]]
+file = "mods/cicada.pw.toml"
+hash = "181b795f314ec32dc270381bc022813e46e5ec7372faa582d5d81ce00334097d"
+metafile = true
+
+[[files]]
+file = "mods/cristel-lib.pw.toml"
+hash = "be8c66aa5e5c209429cf8ae148cedf71d0567652701d04c41ea46cffb7268f52"
+metafile = true
+
+[[files]]
+file = "mods/distanthorizons.pw.toml"
+hash = "adbe039e36d71ac5e8986288240d9a7e13720a108a70ffb0bb989d7a9a7ca30b"
+metafile = true
+
+[[files]]
+file = "mods/do-a-barrel-roll.pw.toml"
+hash = "0d4d1d2c1d871ac819943a098cefca67ec1ca0f603c5c574f588e9ded399bc65"
+metafile = true
+
+[[files]]
+file = "mods/fabric-api.pw.toml"
+hash = "2a77dc7aade5de6d21315582c4b70db40ff2bdf746b61c10d7ad3c5be8422f75"
+metafile = true
+
+[[files]]
+file = "mods/geyser.pw.toml"
+hash = "3b8ef4c0deb4aa0a9d1c8f16e7820073eed131756488bca8588d2506c7358632"
+metafile = true
+
+[[files]]
+file = "mods/grimac.pw.toml"
+hash = "9102ad1ef3331e854f06bf58b8be3ed0b36f0a8c4b000db5003b635b6d190791"
+metafile = true
+
+[[files]]
+file = "mods/lithium.pw.toml"
+hash = "ceed226223967ea3e7017aad327a069250c289c834766e1a3cd27c8d0ad52de1"
+metafile = true
+
+[[files]]
+file = "mods/lithostitched.pw.toml"
+hash = "80fdd42beb7e9932e6476256307be4bb34a29fb0fc6b8dfe061c1966ca2a0d67"
+metafile = true
+
+[[files]]
+file = "mods/luckperms.pw.toml"
+hash = "b1080c467bdaf589c03532385d0009a0ee7c3d32b6f200cf4c4fdea978885fbd"
+metafile = true
+
+[[files]]
+file = "mods/no-chat-reports.pw.toml"
+hash = "3db1b61528d0fdd908f1fe57685bbc49cdbe496bfe0e349a0280334444193c73"
+metafile = true
+
+[[files]]
+file = "mods/seedguard.pw.toml"
+hash = "92979f34b8b2c34c16507ce00514657058f301f1d36e6aa91cdd7bb86e6e2b67"
+metafile = true
+
+[[files]]
+file = "mods/simple-voice-chat.pw.toml"
+hash = "2e210dbb2eca274d176c1f5d93d41638f9826153d358e9c428f1341331bc0ea5"
+metafile = true
+
+[[files]]
+file = "mods/tectonic.pw.toml"
+hash = "9319c3c28fcf1d824c7ac999851cdbcf3be9e9a1fe289e854cbebc15dc63b899"
+metafile = true
+
+[[files]]
+file = "mods/terralith.pw.toml"
+hash = "5d451fb0bab301ca1f7f99ae698e13b8c6827dda54704204cfe0e63b420e9cfa"
+metafile = true
+
+[[files]]
+file = "mods/towns-and-towers.pw.toml"
+hash = "0c96b5bd496fefece5503443a3c0801d751f644df0ec33854838cf48ac28138c"
+metafile = true

@@ -36,13 +36,13 @@ hash = "2a77dc7aade5de6d21315582c4b70db40ff2bdf746b61c10d7ad3c5be8422f75"
 metafile = true
 
 [[files]]
-file = "mods/geyser.pw.toml"
-hash = "3b8ef4c0deb4aa0a9d1c8f16e7820073eed131756488bca8588d2506c7358632"
+file = "mods/fabric-carpet.pw.toml"
+hash = "76e35c62e4e8a344a0db059d72acc7e10019dab0124a607a12708412de8e951a"
 metafile = true
 
 [[files]]
-file = "mods/grimac.pw.toml"
-hash = "9102ad1ef3331e854f06bf58b8be3ed0b36f0a8c4b000db5003b635b6d190791"
+file = "mods/geyser.pw.toml"
+hash = "3b8ef4c0deb4aa0a9d1c8f16e7820073eed131756488bca8588d2506c7358632"
 metafile = true
 
 [[files]]
@@ -53,11 +53,6 @@ metafile = true
 [[files]]
 file = "mods/lithostitched.pw.toml"
 hash = "80fdd42beb7e9932e6476256307be4bb34a29fb0fc6b8dfe061c1966ca2a0d67"
-metafile = true
-
-[[files]]
-file = "mods/luckperms.pw.toml"
-hash = "b1080c467bdaf589c03532385d0009a0ee7c3d32b6f200cf4c4fdea978885fbd"
 metafile = true
 
 [[files]]

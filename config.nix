@@ -313,7 +313,8 @@
       symlinks = let
         modpack = pkgs.fetchPackwizModpack {
           src = ./modpack;
-          packHash = "sha256-TjEKgOfkYOPTaWMydi6RHfPQNBjWsbyFFfa+xMAbP/A=";
+          # packHash = "";
+          packHash = "";
           side = "server";
         };
       in {

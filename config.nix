@@ -314,7 +314,8 @@
         modpack = pkgs.fetchPackwizModpack {
           src = ./modpack;
           # packHash = "";
-          packHash = "";
+          # packHash = "";
+          packHash = "sha256-DrvzPOfI/jiBncFZ7Qt++lQSGbNixtQKgTGEmDVzVUc=";
           side = "server";
         };
       in {

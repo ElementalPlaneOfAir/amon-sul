@@ -16,7 +16,7 @@
   cococoir.domain = "interdim.net";
 
   # ---------------------------------------------------------------------------
-  # Admin Authentication (Caddy basicauth for *rr stack, Transmission, OctoPrint)
+  # Admin Authentication (Caddy basicauth for qBittorrent, autobrr, Jellyseerr, OctoPrint)
   # Generate your own hash: mkpasswd -m bcrypt
   # OctoPrint: ensure your admin account is named "admin" for auto-login.
   # ---------------------------------------------------------------------------
@@ -74,47 +74,24 @@
     public = false;
   };
 
-  cococoir.services.transmission = {
+  cococoir.services.qbittorrent = {
     enable = true;
-    domain = "transmission.interdim.net";
+    domain = "torrent.interdim.net";
     public = false;
     vpnConfigFile = config.clan.core.vars.generators.privado-wireguard.files.wireguard-conf.path;
   };
 
-  cococoir.services.prowlarr = {
+  cococoir.services.autobrr = {
     enable = true;
-    domain = "prowlarr.interdim.net";
+    domain = "autobrr.interdim.net";
     public = false;
+    secretFile = config.clan.core.vars.generators.autobrr-session.files.session-secret.path;
   };
 
-  cococoir.services.radarr = {
+  cococoir.services.jellyseerr = {
     enable = true;
-    domain = "radarr.interdim.net";
-    public = false;
-  };
-
-  cococoir.services.sonarr = {
-    enable = true;
-    domain = "sonarr.interdim.net";
-    public = false;
-  };
-
-  cococoir.services.lidarr = {
-    enable = true;
-    domain = "lidarr.interdim.net";
-    public = false;
-  };
-
-  cococoir.services.bazarr = {
-    enable = true;
-    domain = "bazarr.interdim.net";
-    public = false;
-  };
-
-  cococoir.services.flaresolverr = {
-    enable = true;
-    domain = "flaresolverr.interdim.net";
-    public = false;
+    domain = "requests.interdim.net";
+    public = true;
   };
 
   # ---------------------------------------------------------------------------

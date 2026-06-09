@@ -66,6 +66,7 @@ The VPS intentionally runs **only** the rathole server, SSH, and a firewall.
 | `machines/vps/configuration.nix` | Hostname (`vps`), rathole server config, SSH hardening, firewall, deployment target. |
 | `machines/vps/disk-config.nix` | Disko configuration for the VPS (`/dev/vda`, GPT, single ext4 root). |
 | `modules/rathole-vars.nix` | Defines `flake.modules.nixos.ratholeVars`. Uses Clan `vars.generators.rathole-tokens` to create cryptographically random tokens for `http`, `https`, `https_udp`, `smtp`, `submission`, and `imaps` services. Tokens are shared between client and server. |
+| `modules/autobrr-vars.nix` | Defines `flake.modules.nixos.autobrrVars`. Uses Clan `vars.generators.autobrr-session` to generate a random 32-byte base64 session secret for the autobrr web interface. |
 | `modules/users.nix` | Defines `flake.modules.nixos.users`. Creates admin users `nicole` and `brad` with their SSH public keys and sets `fish` as the login shell. |
 
 ## Secret & Variable Management (Clan)
@@ -73,6 +74,7 @@ The VPS intentionally runs **only** the rathole server, SSH, and a firewall.
 Clan stores per-machine and shared variables under `vars/` and encrypted secrets under `sops/`.
 
 - `vars/per-machine/amon-sul/privado-wireguard/wireguard-conf/secret` — WireGuard VPN config.
+- `vars/per-machine/amon-sul/autobrr-session/session-secret/secret` — autobrr session secret.
 - `vars/shared/rathole-tokens/client-tokens/secret` — Rathole client TOML credentials.
 - `vars/shared/rathole-tokens/server-tokens/secret` — Rathole server TOML credentials.
 
@@ -86,13 +88,9 @@ Clan stores per-machine and shared variables under `vars/` and encrypted secrets
 | Matrix | `matrix.interdim.net` | ✅ | `.well-known` on base domain. |
 | mautrix-gmessages | *(none)* | — | Matrix-Google Messages bridge. Appservice, no public vhost. Requires manual registration in Matrix admin room after first deploy. |
 | CryptPad | `cryptpad.interdim.net` | ✅ | — |
-| Transmission | `transmission.interdim.net` | ❌ | VPN-confined via WireGuard. |
-| Prowlarr | `prowlarr.interdim.net` | ❌ | — |
-| Radarr | `radarr.interdim.net` | ❌ | — |
-| Sonarr | `sonarr.interdim.net` | ❌ | — |
-| Lidarr | `lidarr.interdim.net` | ❌ | — |
-| Bazarr | `bazarr.interdim.net` | ❌ | — |
-| FlareSolverr | `flaresolverr.interdim.net` | ❌ | — |
+| qBittorrent | `torrent.interdim.net` | ❌ | VPN-confined via WireGuard. WebUI on 8080. |
+| autobrr | `autobrr.interdim.net` | ❌ | Release automation. Hands matched releases to qBittorrent. Session secret via `clan.core.vars.generators.autobrr-session`. |
+| Jellyseerr | `requests.interdim.net` | ✅ | Unified movie/TV request UI. Points at Jellyfin + qBittorrent. |
 | gdoc-extract | `misc.interdim.net` | ✅ | Custom Go service imported via `inputs.gdoc-extract`. |
 
 ## Networking Topology
@@ -200,5 +198,5 @@ Both machines use `system.stateVersion = "24.11"`.
 - **Do not commit plaintext secrets.** Secrets live in `vars/` and `sops/` and are managed by Clan.
 - **Do not change `rathole-vars.nix` tokens** unless you intend to rotate credentials on both machines.
 - **The VPS is intentionally minimal.** Avoid adding heavy services there; keep them on `amon-sul` and tunnel via rathole.
-- **Transmission is VPN-confined.** If you add other services that need VPN isolation, follow the `vpnNamespaces.wg` + `systemd.services.<name>.vpnConfinement` pattern used in `media-stack.nix`.
+- **qBittorrent is VPN-confined.** If you add other services that need VPN isolation, follow the `vpnNamespaces.wg` + `systemd.services.<name>.vpnConfinement` pattern used in `media-stack.nix`.
 - **mautrix-gmessages requires manual appservice registration.** After first deploy, the bridge generates `/var/lib/mautrix-gmessages/gmessages-registration.yaml`. Copy its contents and paste it into the Matrix admin room with `!admin appservices register` followed by the YAML block. Then follow the bridge authentication docs at <https://docs.mau.fi/bridges/go/gmessages/authentication.html> to pair an Android phone.

@@ -44,6 +44,7 @@
                 inputs.gdoc-extract.nixosModules.default
                 inputs.nix-minecraft.nixosModules.minecraft-servers
                 inputs.self.modules.nixos.ratholeVars
+                inputs.self.modules.nixos.autobrrVars
                 ./machines/amon-sul/vpnVars.nix
                 inputs.self.modules.nixos.users
                 ./machines/amon-sul/configuration.nix

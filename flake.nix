@@ -86,8 +86,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     cococoir = {
-      # url = "github:ElementalPlaneofAir/cococoir";
-      url = "path:/home/nicole/cococoir";
+      url = "github:ElementalPlaneofAir/cococoir";
+      # url = "path:/home/nicole/cococoir";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     gdoc-extract = {

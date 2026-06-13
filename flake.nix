@@ -41,6 +41,7 @@
                 injectInputs
                 inputs.vpn-confinement.nixosModules.default
                 inputs.cococoir.nixosModules.default
+                inputs.cococoir.modules.nixos.storageVars
                 inputs.gdoc-extract.nixosModules.default
                 inputs.nix-minecraft.nixosModules.minecraft-servers
                 inputs.self.modules.nixos.ratholeVars

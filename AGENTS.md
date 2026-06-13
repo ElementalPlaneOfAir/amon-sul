@@ -93,6 +93,86 @@ Clan stores per-machine and shared variables under `vars/` and encrypted secrets
 | Jellyseerr | `requests.interdim.net` | ✅ | Unified movie/TV request UI. Points at Jellyfin + qBittorrent. |
 | gdoc-extract | `misc.interdim.net` | ✅ | Custom Go service imported via `inputs.gdoc-extract`. |
 
+## Storage
+
+Cococoir provides a distributed S3-compatible object store ([Garage](https://garagehq.deuxfleurs.fr/)) via `cococoir.storage.*`. On `amon-sul` this is configured as a **single-node, 1-zone cluster** with one `media` bucket at RF=1, FUSE-mounted at `/media/entertain`.
+
+```nix
+cococoir.storage = {
+  enable = true;
+  cluster = {
+    clusterId = "amon-sul";
+    bootstrapPeers = []; # single-node
+    layout.zones = [ { id = "z1"; capacity = "1T"; } ];
+  };
+  node = {
+    id = "amon-sul";
+    address = "192.168.0.7:3901";
+    zone = "z1";
+    dataDir  = "/var/lib/cococoir/garage/data";
+    metaDir  = "/var/lib/cococoir/garage/meta";
+    capacity = "1T";
+  };
+  buckets.media = { replicationFactor = 1; };
+  mounts.media  = { bucket = "media"; mountPoint = "/media/entertain"; readOnly = false; };
+};
+```
+
+### What you get
+
+- **Garage daemon** running locally on `127.0.0.1:3900` (S3) and `:3901` (RPC).
+- **One bucket** `media` with a single global access key, generated at first boot and stored at `/var/lib/cococoir/garage/global/`.
+- **A FUSE mount** at `/media/entertain` (geesefs, `--umask=000 --allow-other`) — appears as a regular POSIX directory.
+- **qBittorrent saves there by default** (its `downloadDir` defaults to `/media/entertain/downloads`).
+
+### Native-S3 access (Jellyfin, Rclone, S3 CLI, etc.)
+
+Read credentials from the derived view:
+
+```nix
+cococoir.storage.derived.buckets.media = {
+  endpoint              = "http://192.168.0.7:3900";
+  region                = "garage";
+  accessKeyId           = "GK...";                     # populated at first boot
+  secretAccessKeyFile   = "/var/lib/cococoir/garage/global/secret-access-key";
+  replicationFactor     = 1;
+  intendedReplicationFactor = 1;
+};
+```
+
+The access key is generated on first boot by `garage-bucket-init.service`. Before that boot, `accessKeyId` is an empty string — that's why `Jellyfin` is not auto-configured to use the S3 endpoint; it must be added as a library path manually (see Post-deploy below).
+
+### Path layout on disk
+
+| Path | Backing |
+|------|---------|
+| `/media` | btrfs (physical disk, UUID `5424a16e-…`) — existing local media library |
+| `/export/media` | bind-mount of `/media` — NFS-shared on the LAN |
+| `/media/entertain` | **FUSE geesefs mount of the `media` S3 bucket** — this is the new, distributed layer |
+| `/media/entertain/downloads` | where qBittorrent saves completed torrents (default `downloadDir`) |
+| `/var/lib/cococoir/garage/data` | Garage's local data dir (on root volume) |
+| `/var/lib/cococoir/garage/meta` | Garage's metadata DB (SSD if possible) |
+| `/var/lib/cococoir/garage/global/` | Generated at first boot: `access-key-id` + `secret-access-key` |
+
+The btrfs `/media` and the FUSE `/media/entertain` are **separate**: the btrfs disk is your existing local library (movies that have been verified and removed from seed); the FUSE mount is the new, distributed layer (active downloads and any new media added to the cluster).
+
+### Scaling out (1 → 3 nodes)
+
+To add a second node, edit each machine's `flake.nix` and `config.nix`:
+
+1. Add a second entry to `cluster.layout.zones` (e.g. `{ id = "z2"; capacity = "1T"; }`).
+2. On the **existing** node, set `cluster.bootstrapPeers = [ "<new-node-address>:3901" ]`.
+3. On the **new** node, set `cluster.bootstrapPeers = [ "<existing-node-address>:3901" ]` (everything except self).
+4. Reduce the `media` bucket's `replicationFactor` to `1` (or accept the eval-time RF assertion if you want to use this cluster for RF=3 buckets later).
+5. Deploy both. Garage will gossip and rebalance the data.
+
+### Post-deploy (one-time, after first boot)
+
+1. **Check that the bucket init ran**: `systemctl status garage-bucket-init.service` should show `active (exited)`.
+2. **Verify the access key** is generated: `cat /var/lib/cococoir/garage/global/access-key-id` should be a `GK...` string.
+3. **Add a Jellyfin library** pointing at `/media/entertain` (Movies and/or Shows). The default Jellyfin config has no library configured; add one via the web UI on first login at `https://jellyfin.interdim.net/`.
+4. **(Optional) Rclone or other native-S3 clients**: use the endpoint, key, and secret file from the derived view above.
+
 ## Networking Topology
 
 ```
@@ -200,3 +280,4 @@ Both machines use `system.stateVersion = "24.11"`.
 - **The VPS is intentionally minimal.** Avoid adding heavy services there; keep them on `amon-sul` and tunnel via rathole.
 - **qBittorrent is VPN-confined.** If you add other services that need VPN isolation, follow the `vpnNamespaces.wg` + `systemd.services.<name>.vpnConfinement` pattern used in `media-stack.nix`.
 - **mautrix-gmessages requires manual appservice registration.** After first deploy, the bridge generates `/var/lib/mautrix-gmessages/gmessages-registration.yaml`. Copy its contents and paste it into the Matrix admin room with `!admin appservices register` followed by the YAML block. Then follow the bridge authentication docs at <https://docs.mau.fi/bridges/go/gmessages/authentication.html> to pair an Android phone.
+- **`/media` is the btrfs local disk; `/media/entertain` is the Garage S3 FUSE mount.** They are separate. The FUSE mount appears as a POSIX directory but the data is actually on the local Garage node (single-node for now). Don't add a Jellyfin library at `/media` if you want it to be S3-backed — point it at `/media/entertain` instead.

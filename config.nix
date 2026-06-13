@@ -163,6 +163,42 @@
   };
 
   # ---------------------------------------------------------------------------
+  # Cococoir distributed object storage (Garage S3)
+  # Single-node, 1-zone cluster. Add zones/nodes here when scaling out.
+  # The `media` bucket (RF=1, re-downloadable) is FUSE-mounted at
+  # /media/entertain — qBittorrent saves there by default.
+  # ---------------------------------------------------------------------------
+  cococoir.storage = {
+    enable = true;
+    cluster = {
+      clusterId = "amon-sul";
+      bootstrapPeers = []; # single-node cluster
+      layout.zones = [
+        {
+          id = "z1";
+          capacity = "1T"; # honest answer: most of /media is for this
+        }
+      ];
+    };
+    node = {
+      id = "amon-sul";
+      address = "192.168.0.7:3901";
+      zone = "z1";
+      dataDir = "/var/lib/cococoir/garage/data";
+      metaDir = "/var/lib/cococoir/garage/meta";
+      capacity = "1T";
+    };
+    buckets.media = {
+      replicationFactor = 1; # re-downloadable
+    };
+    mounts.media = {
+      bucket = "media";
+      mountPoint = "/media/entertain";
+      readOnly = false;
+    };
+  };
+
+  # ---------------------------------------------------------------------------
   # Storage & NFS
   # ---------------------------------------------------------------------------
   fileSystems."/backup" = {

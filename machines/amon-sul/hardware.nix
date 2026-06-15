@@ -9,7 +9,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  environment.systemPackages = with pkgs; [bat eza zoxide kitty];
+  environment.systemPackages = with pkgs; [bat eza zoxide kitty tailscale];
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = ["dm-snapshot"];
   boot.kernelModules = ["kvm-amd"];

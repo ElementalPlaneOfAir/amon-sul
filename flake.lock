@@ -73,11 +73,11 @@
         "vpn-confinement": "vpn-confinement"
       },
       "locked": {
-        "lastModified": 1781367191,
-        "narHash": "sha256-7UaqRFRAX0hMgyFVNgrrGi2TCAb1z57kdAHodPxYH5o=",
+        "lastModified": 1781483425,
+        "narHash": "sha256-6XGv7InO5sLvhW1wUS/upBNBdeuhoMoRUzUVqb7yk18=",
         "owner": "ElementalPlaneofAir",
         "repo": "cococoir",
-        "rev": "8e01b4b9bc0a7e6780964ef502175e60863a7216",
+        "rev": "6d0d7eb129f86235945ced2fe37941cd766a3687",
         "type": "github"
       },
       "original": {

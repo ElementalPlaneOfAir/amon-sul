@@ -73,14 +73,17 @@
         "vpn-confinement": "vpn-confinement"
       },
       "locked": {
-        "lastModified": 1781744945,
-        "narHash": "sha256-w0CW1wb8J1N5UqgbjWHuGdwL9jQIoE0cjg8S62blOzM=",
-        "path": "/home/nicole/cococoir",
-        "type": "path"
+        "lastModified": 1781746498,
+        "narHash": "sha256-zgAl/wA5+msMlZQvXHGCzvz67Jg/tDXJW+tBSuAiI3s=",
+        "owner": "ElementalPlaneOfAir",
+        "repo": "cococoir",
+        "rev": "88a82d78f65a4db5e946d9811d38f6971c799ccd",
+        "type": "github"
       },
       "original": {
-        "path": "/home/nicole/cococoir",
-        "type": "path"
+        "owner": "ElementalPlaneOfAir",
+        "repo": "cococoir",
+        "type": "github"
       }
     },
     "data-mesher": {

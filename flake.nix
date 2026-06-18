@@ -101,7 +101,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     cococoir = {
-      url = "path:/home/nicole/cococoir";
+      url = "github:ElementalPlaneOfAir/cococoir";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     tunnel = {

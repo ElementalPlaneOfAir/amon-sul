@@ -34,6 +34,20 @@
           meta.name = "amon-sul";
           meta.domain = "interdim.net";
 
+          inventory.instances.cococoir-garage = {
+            module = {
+              input = "cococoir";
+              name = "cococoir-garage";
+            };
+            roles.node = {
+              machines.amon-sul = {};
+              settings = {
+                address = "192.168.0.7:3901";
+                capacity = "1T";
+              };
+            };
+          };
+
           machines = {
             amon-sul = {
               nixpkgs.hostPlatform = "x86_64-linux";
@@ -41,7 +55,7 @@
                 injectInputs
                 inputs.vpn-confinement.nixosModules.default
                 inputs.cococoir.nixosModules.default
-                inputs.cococoir.modules.nixos.storageVars
+                inputs.tunnel.nixosModules.client
                 inputs.gdoc-extract.nixosModules.default
                 inputs.nix-minecraft.nixosModules.minecraft-servers
                 inputs.self.modules.nixos.ratholeVars
@@ -57,6 +71,7 @@
               imports = [
                 injectInputs
                 inputs.cococoir.nixosModules.default
+                inputs.tunnel.nixosModules.server
                 inputs.self.modules.nixos.ratholeVars
                 inputs.self.modules.nixos.users
                 ./machines/vps/configuration.nix
@@ -86,8 +101,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     cococoir = {
-      url = "github:ElementalPlaneofAir/cococoir";
-      # url = "path:/home/nicole/cococoir";
+      url = "path:/home/nicole/cococoir";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    tunnel = {
+      url = "path:/home/nicole/cococoir/tunnel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     gdoc-extract = {

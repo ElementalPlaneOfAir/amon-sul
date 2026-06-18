@@ -16,33 +16,11 @@
   cococoir.domain = "interdim.net";
 
   # ---------------------------------------------------------------------------
-  # Admin Authentication (Caddy basicauth for qBittorrent, autobrr, Jellyseerr, OctoPrint)
-  # Generate your own hash: mkpasswd -m bcrypt
-  # OctoPrint: ensure your admin account is named "admin" for auto-login.
-  # ---------------------------------------------------------------------------
-  cococoir.adminAuth = {
-    enable = true;
-    users.nicole = "$2b$05$DRPpuqQUFqbRI5o8mXytuOgCpGFcVkcDOWSC7Mn4vUTbPv4LhRRz6"; # changeme
-  };
-
-  # ---------------------------------------------------------------------------
   # Services
   # ---------------------------------------------------------------------------
   cococoir.services.jellyfin = {
     enable = true;
     domain = "jellyfin.interdim.net";
-    public = true;
-  };
-
-  cococoir.services.vaultwarden = {
-    enable = true;
-    domain = "vault.interdim.net";
-    public = true;
-  };
-
-  cococoir.services.forgejo = {
-    enable = true;
-    domain = "git.interdim.net";
     public = true;
   };
 
@@ -60,18 +38,6 @@
     enable = true;
     domain = "cryptpad.interdim.net";
     public = true;
-  };
-
-  cococoir.services.kavita = {
-    enable = true;
-    domain = "kavita.interdim.net";
-    public = true;
-  };
-
-  cococoir.services.octoprint = {
-    enable = true;
-    domain = "octoprint.interdim.net";
-    public = false;
   };
 
   cococoir.services.qbittorrent = {
@@ -111,9 +77,9 @@
   };
 
   # ---------------------------------------------------------------------------
-  # Proxy (client side — tunnels to VPS)
+  # Tunnel client (rathole to VPS)
   # ---------------------------------------------------------------------------
-  cococoir.proxy.client = {
+  tunnel.client = {
     enable = true;
     serverAddress = "66.179.138.70";
     credentialsFile = config.clan.core.vars.generators.rathole-tokens.files.client-tokens.path;
@@ -160,42 +126,6 @@
   networking.firewall = {
     allowedTCPPorts = [53 80 111 2049 4000 4001 4002 443 20048 25565];
     allowedUDPPorts = [53 80 111 2049 4000 4001 4002 443 20048 19132 24454];
-  };
-
-  # ---------------------------------------------------------------------------
-  # Cococoir distributed object storage (Garage S3)
-  # Single-node, 1-zone cluster. Add zones/nodes here when scaling out.
-  # The `media` bucket (RF=1, re-downloadable) is FUSE-mounted at
-  # /media/entertain — qBittorrent saves there by default.
-  # ---------------------------------------------------------------------------
-  cococoir.storage = {
-    enable = true;
-    cluster = {
-      clusterId = "amon-sul";
-      bootstrapPeers = []; # single-node cluster
-      layout.zones = [
-        {
-          id = "z1";
-          capacity = "1T"; # honest answer: most of /media is for this
-        }
-      ];
-    };
-    node = {
-      id = "amon-sul";
-      address = "192.168.0.7:3901";
-      zone = "z1";
-      dataDir = "/var/lib/cococoir/garage/data";
-      metaDir = "/var/lib/cococoir/garage/meta";
-      capacity = "1T";
-    };
-    buckets.media = {
-      replicationFactor = 1; # re-downloadable
-    };
-    mounts.media = {
-      bucket = "media";
-      mountPoint = "/media/entertain";
-      readOnly = false;
-    };
   };
 
   # ---------------------------------------------------------------------------

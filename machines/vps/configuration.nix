@@ -5,7 +5,7 @@
   networking.useDHCP = true;
 
   # Proxy server configuration
-  cococoir.proxy.server = {
+  tunnel.server = {
     enable = true;
     bindAddress = "0.0.0.0";
     credentialsFile = config.clan.core.vars.generators.rathole-tokens.files.server-tokens.path;

@@ -1,2 +1,9 @@
 writing/minecraft_server.md
 .direnv
+
+# Runtime state — clan vars and sops age keys are generated locally
+# by `clan vars generate` and shouldn't be tracked. Tracking them
+# bloats the repo, makes diffs noisy (machine assignment files
+# change every deploy), and risks leaking secrets.
+vars/
+sops/

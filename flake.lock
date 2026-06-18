@@ -73,17 +73,14 @@
         "vpn-confinement": "vpn-confinement"
       },
       "locked": {
-        "lastModified": 1781483425,
-        "narHash": "sha256-6XGv7InO5sLvhW1wUS/upBNBdeuhoMoRUzUVqb7yk18=",
-        "owner": "ElementalPlaneofAir",
-        "repo": "cococoir",
-        "rev": "6d0d7eb129f86235945ced2fe37941cd766a3687",
-        "type": "github"
+        "lastModified": 1781744945,
+        "narHash": "sha256-w0CW1wb8J1N5UqgbjWHuGdwL9jQIoE0cjg8S62blOzM=",
+        "path": "/home/nicole/cococoir",
+        "type": "path"
       },
       "original": {
-        "owner": "ElementalPlaneofAir",
-        "repo": "cococoir",
-        "type": "github"
+        "path": "/home/nicole/cococoir",
+        "type": "path"
       }
     },
     "data-mesher": {
@@ -464,6 +461,7 @@
         "nix-minecraft": "nix-minecraft",
         "nixpkgs": "nixpkgs",
         "sops-nix": "sops-nix_2",
+        "tunnel": "tunnel",
         "vpn-confinement": "vpn-confinement_2"
       }
     },
@@ -595,6 +593,23 @@
         "owner": "numtide",
         "repo": "treefmt-nix",
         "type": "github"
+      }
+    },
+    "tunnel": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1781618022,
+        "narHash": "sha256-RZ6deS9OfXB+Rzq/Y1nWNl/fK7QjGurOUQMXAtknG6A=",
+        "path": "/home/nicole/cococoir/tunnel",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/nicole/cococoir/tunnel",
+        "type": "path"
       }
     },
     "vpn-confinement": {

@@ -1,7 +1,7 @@
-{ inputs, ... }: {
-  imports = [ inputs.flake-parts.flakeModules.modules ];
+{inputs, ...}: {
+  imports = [inputs.flake-parts.flakeModules.modules];
 
-  flake.modules.nixos.users = { pkgs, ... }: {
+  flake.modules.nixos.users = {pkgs, ...}: {
     cococoir.adminUsers = {
       nicole = {
         keys = [
@@ -16,6 +16,10 @@
         keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILBunjCx4C8YjSS9X9zH+a/aRTrp3J/0US/fAKd2SVQ9 brad@mina-rau"
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHaOgK4fO5gTB79Infge2b+31VzXnC23lqV7m5NA+xuz bvenner@proton.me"
+        ];
+      };
+      matthewkrumlauf = {
+        keys = [
         ];
       };
     };
